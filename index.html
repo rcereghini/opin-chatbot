@@ -1,7 +1,8 @@
 <html>
 <head>
 	<title>API Example</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		var accessToken = "60745054997b4eaab5eaf40b4b4711b1";
@@ -85,17 +86,19 @@
 		}
 	</script>
 	<style type="text/css">
-		body { width: 500px; margin: 0 auto; text-align: center; margin-top: 20px; }
-		div {  position: absolute; }
-		input { width: 400px; }
-		button { width: 50px; }
+		body { width: 370px; margin: 0 auto; text-align: center; margin-top: 20px; }
+		div {  position: absolute; width: 370px;}
+		input { width: 300px; }
+		button { width: 70px; display: inline-block; }
 		textarea { width: 100%; }
 	</style>
 </head>
 <body>
 	<div>
-		<input id="input" type="text"> <button id="rec">Speak</button>
-		<br>Response<br> <textarea id="response" cols="40" rows="20"></textarea>
+        <br>Response<br> <textarea id="response" cols="40" rows="20"></textarea>
+        <div style="display:flex;">
+            <input id="input" class="botInput" type="text"> <button class="microphone" id="rec">Speak</button>
+        </div>
 	</div>
 </body>
 </html>
