@@ -81,7 +81,7 @@
 				data: JSON.stringify({ query: text, lang: "en", sessionId: "somerandomthing" }),
 				success: function(data) {
                     // setResponse(JSON.stringify(data, undefined, 2));
-                    setResponse(`OpinAds: ${data.result.fulfillment.speech}`)
+                    setResponse(`OpinAds Assistant: ${data.result.fulfillment.speech}`)
 				},
 				error: function() {
 					setResponse("Internal Server Error");
@@ -105,7 +105,7 @@
             let newResponse = document.getElementById('newResponse')
             let newMessage = document.createElement('p')
             let urlCode;
-            if(val.startsWith('OpinAds:')){
+            if(val.startsWith('OpinAds Assistant:')){
                 newMessage.style.alignSelf = 'flex-end';
                 newMessage.style.backgroundColor = '#ddd';
             }else{
