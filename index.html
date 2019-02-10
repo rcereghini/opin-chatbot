@@ -91,7 +91,17 @@
             }
 		}
 		function setResponse(val) {
-            const links = [{},{link: 'https://www.facebook.com/business/pages/set-up', linkText:'Create Business Page'},{link: 'www.google.com', linkText: 'Google'}]
+            const links = [
+                {},
+                {
+                    link: 'https://www.facebook.com/business/pages/set-up', 
+                    linkText:'Create Business Page'
+                },
+                {
+                    link: 'www.google.com', 
+                    linkText: 'Google'
+                }
+                ]
             let newResponse = document.getElementById('newResponse')
             let newMessage = document.createElement('p')
             let urlCode;
@@ -116,7 +126,7 @@
             newMessage.innerHTML = val
             newResponse.appendChild(newMessage)
             if(urlCode){
-                newMessage.innerHTML += `<a style="cursor: pointer; z-index: 20" id="link${urlCode}" href="${links[urlCode].link}">${links[urlCode].linkText}</a>`
+                newMessage.innerHTML += `<br><a class='messageLink' style="" id="link${urlCode}" href="${links[urlCode].link}">${links[urlCode].linkText}</a>`
             }
                 // newResponse.appendChild(linkResponse)
             newResponse.scrollTop = newResponse.scrollHeight;
@@ -142,6 +152,19 @@
             border-radius: 15px;
             width: 300px;
             display: inline-block;
+        }
+        .messageLink{
+            cursor: pointer; 
+            border: 1px solid #ccc; 
+            margin-top: 10px; 
+            border-radius: 3px; 
+            display:block; 
+            text-align: center; 
+            background-color: #eee; 
+            padding:.5em;
+        }
+        .messageLink:hover{
+            text-decoration: none;
         }
 	</style>
 </head>
