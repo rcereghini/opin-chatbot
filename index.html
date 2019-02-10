@@ -81,7 +81,7 @@
 				data: JSON.stringify({ query: text, lang: "en", sessionId: "somerandomthing" }),
 				success: function(data) {
                     // setResponse(JSON.stringify(data, undefined, 2));
-                    setResponse(`Robert: ${data.result.fulfillment.speech}`)
+                    setResponse(`OpinAds: ${data.result.fulfillment.speech}`)
 				},
 				error: function() {
 					setResponse("Internal Server Error");
@@ -93,7 +93,7 @@
 		function setResponse(val) {
             let newResponse = document.getElementById('newResponse')
             let newMessage = document.createElement('p')
-            if(val.startsWith('Robert:')){
+            if(val.startsWith('OpinAds:')){
                 newMessage.style.alignSelf = 'flex-end';
                 newMessage.style.backgroundColor = '#ddd';
             }else{
