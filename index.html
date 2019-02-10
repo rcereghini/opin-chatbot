@@ -14,6 +14,10 @@
 					send();
 				}
 			});
+            $("#send").click(function(event) {
+					event.preventDefault();
+					send();
+			});
 			$("#rec").click(function(event) {
 				switchRecognition();
 			});
@@ -62,6 +66,7 @@
 		}
 		function send() {
 			var text = $("#input").val();
+            setResponse(text)
 			$.ajax({
 				type: "POST",
 				url: baseUrl + "query?v=20150910",
@@ -85,8 +90,8 @@
 			$("#response").text(val);
 		}
 	</script>
-	<style type="text/css">
-		body { width: 370px; margin: 0 auto; text-align: center; }
+    <style type="text/css">
+		full-wrap { width: 370px; margin: 0 auto; text-align: center; top: 0; left: 0; }
 		div {  position: absolute; width: 370px;}
 		input { width: 300px; }
 		button { width: 70px; display: inline-block; }
@@ -94,10 +99,10 @@
 	</style>
 </head>
 <body>
-	<div>
+	<div class='full-wrap'>
         <textarea id="response" cols="40" rows="15"></textarea>
         <div style="display:flex;">
-            <input id="input" class="botInput" type="text"> <button class="microphone" id="rec">Speak</button>
+            <input id="input" class="botInput" type="text"> <button class="microphone" id="send">Send</button>
         </div>
 	</div>
 </body>
