@@ -7,6 +7,7 @@
 	<script type="text/javascript">
 		var accessToken = "60745054997b4eaab5eaf40b4b4711b1";
 		var baseUrl = "https://api.api.ai/v1/";
+        const userInput = document.getElementById('input')
 		$(document).ready(function() {
 			$("#input").keypress(function(event) {
 				if (event.which == 13) {
@@ -66,6 +67,8 @@
 		}
 		function send() {
 			var text = $("#input").val();
+            if(text !== ''){
+            document.getElementById('input').value = '';
             setResponse(text)
 			$.ajax({
 				type: "POST",
@@ -84,23 +87,52 @@
 					setResponse("Internal Server Error");
 				}
 			});
-			setResponse("Loading...");
+			// setResponse("Loading...");
+            }
 		}
 		function setResponse(val) {
-			$("#response").text(val);
+            let newResponse = document.getElementById('newResponse')
+            let newMessage = document.createElement('p')
+            if(val.startsWith('Robert:')){
+                newMessage.style.alignSelf = 'flex-end';
+                newMessage.style.backgroundColor = '#ddd';
+            }else{
+                newMessage.style.backgroundColor = 'rgb(78, 131, 220)';
+                newMessage.style.color = 'white';
+            }
+            newMessage.classList.add('messageBubble')
+            newMessage.innerHTML = val
+            newResponse.appendChild(newMessage)
+            newResponse.scrollTop = newResponse.scrollHeight;
 		}
 	</script>
     <style type="text/css">
 		full-wrap { width: 370px; margin: 0 auto; text-align: center; top: 0; left: 0; }
-		div {  position: absolute; width: 370px;}
+		/* div {  position: absolute; width: 370px;} */
 		input { width: 300px; }
 		button { width: 70px; display: inline-block; }
-		textarea { width: 100%; }
+		textarea { width: 370px; }
+        .newResponse{
+            width: 370px;
+            height: 400px;
+            border: 1px solid #ddd;
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: column;
+        }
+        .messageBubble{
+            margin: 1em;
+            padding: 1em;
+            border-radius: 15px;
+            width: 300px;
+            display: inline-block;
+        }
 	</style>
 </head>
 <body>
 	<div class='full-wrap'>
-        <textarea id="response" cols="40" rows="15"></textarea>
+        <!-- <textarea id="response" cols="40" rows="15"></textarea> -->
+        <div id="newResponse" class="newResponse"></div>
         <div style="display:flex;">
             <input id="input" class="botInput" type="text"> <button class="microphone" id="send">Send</button>
         </div>
