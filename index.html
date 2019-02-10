@@ -91,8 +91,10 @@
             }
 		}
 		function setResponse(val) {
+            const links = [{},{link: 'https://www.facebook.com/business/pages/set-up', linkText:'Create Business Page'},{link: 'www.google.com', linkText: 'Google'}]
             let newResponse = document.getElementById('newResponse')
             let newMessage = document.createElement('p')
+            let urlCode;
             if(val.startsWith('OpinAds:')){
                 newMessage.style.alignSelf = 'flex-end';
                 newMessage.style.backgroundColor = '#ddd';
@@ -100,9 +102,23 @@
                 newMessage.style.backgroundColor = 'rgb(78, 131, 220)';
                 newMessage.style.color = 'white';
             }
+            if(val.endsWith('_LINK')){
+                let firstIndex = val.indexOf('LINK_') + 5
+                let secondIndex = val.indexOf('_LINK')
+                urlCode = val.split('').slice(firstIndex, secondIndex).join('')
+                val = val.split('')
+                val.length = firstIndex - 5;
+                val = val.join('')
+                console.log('URL CODE', urlCode)
+                console.log('INDEXES', firstIndex, secondIndex)
+            }
             newMessage.classList.add('messageBubble')
             newMessage.innerHTML = val
             newResponse.appendChild(newMessage)
+            if(urlCode){
+                newMessage.innerHTML += `<a style="cursor: pointer; z-index: 20" id="link${urlCode}" href="${links[urlCode].link}">${links[urlCode].linkText}</a>`
+            }
+                // newResponse.appendChild(linkResponse)
             newResponse.scrollTop = newResponse.scrollHeight;
 		}
 	</script>
