@@ -126,7 +126,7 @@
             newMessage.innerHTML = val
             newResponse.appendChild(newMessage)
             if(urlCode){
-                newMessage.innerHTML += `<br><a class='messageLink' style="" id="link${urlCode}" href="${links[urlCode].link}">${links[urlCode].linkText}</a>`
+                newMessage.innerHTML += `<br><a class='messageLink' style="" id="link${urlCode}" href="${links[urlCode].link}" target="_blank">${links[urlCode].linkText}</a>`
             }
                 // newResponse.appendChild(linkResponse)
             newResponse.scrollTop = newResponse.scrollHeight;
